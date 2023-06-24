@@ -190,7 +190,7 @@ The `ViewModelBuilder` has both an `onCreate` and `onDispose` callbacks that are
 @override
 Widget build(BuildContext context) {
   return Scaffold(
-    body: ViewModelBuilder.nonReactive(
+    body: ViewModelBuilder(
       provider: loginViewModelProvider,
       onCreate: (model) {
         // do something when the viewmodel is created
