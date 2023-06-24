@@ -118,7 +118,6 @@ Widget build(BuildContext context) {
                       style: bodyStyle.copyWith(color: Colors.white),
                     ),
             ),
-            verticalSpaceLarge,
           ],
         );
       },
