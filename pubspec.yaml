@@ -1,0 +1,19 @@
+name: mvvm_riverpod
+description: A new Flutter package project.
+version: 0.0.1
+
+environment:
+  sdk: ">=3.0.1 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.3.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
