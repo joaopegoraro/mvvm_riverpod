@@ -128,7 +128,7 @@ Widget build(BuildContext context) {
 ```
 
 #### Listening to ViewModel events
-The `ViewModelBuilder` has the optional `OnEventEmitted` thas is triggered every time the ViewModel emits an event:
+The `ViewModelBuilder` has the optional `OnEventEmitted` callback that is triggered every time the ViewModel emits an event:
 ```dart
 void _listenToEvents(
   BuildContext context,
