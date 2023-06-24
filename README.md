@@ -164,7 +164,7 @@ Widget build(BuildContext context) {
 
 #### Accessing the ViewModel without reacting to its changes
 
-If you don't need the widget tree to rebuild when the ViewModel notify its listeners, or you only need access to its methods and/or listen to its events, you can use the `ViewModelBuilder.nonReactive` constructor:
+If you don't need the widget tree to rebuild when the ViewModel notifies its listeners, or you only need access to its methods and/or listen to its events, you can use the `ViewModelBuilder.nonReactive` constructor:
 
 ```dart
 @override
