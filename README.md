@@ -67,11 +67,19 @@ class LoginViewModel extends ViewModel<LoginEvent> {
   bool get isLoading => _isLoading;
 
   void performLogin() {
+    // You can use the updateUi method to execute a block of code
+    // that will call notifyListeners() at the end of it
     updateUi(() => _isLoading = true);
 
     _apiService.login(_email, _password).catchError((err) {
+      // You can use the showSnackbar method to update the inherited
+      // snackbarMessage field and emit an event, presumably one 
+      // that will show a snackbar in the view
       showSnackbar(err.message, LoginEvent.showSnackbar);
     }).then((_) {
+      // You can use the emitEvent method to emit an event to the ViewModel
+      // eventStream that will be listened to inside the ViewModelBuilder
+      // that you will see in the next example
       emitEvent(LoginEvent.navigateToHomeScreen);
     }).whenComplete(() {
       updateUi(() => _isLoading = false);
