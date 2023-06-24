@@ -40,11 +40,7 @@ class ViewModelBuilder<VM extends ViewModel<EVENT>, EVENT> extends ConsumerState
   /// Whether or not the [build] method should rebuild when the [ViewModel] calls to notify its listeners
   final bool _nonReactive;
 
-  final Widget Function(
-    BuildContext context,
-    VM value,
-    Widget? child,
-  ) builder;
+  final Widget Function(BuildContext context, VM value) builder;
 
   @override
   ConsumerState<ViewModelBuilder> createState() => ViewModelBuilderState<VM, EVENT>();
@@ -79,9 +75,9 @@ class ViewModelBuilderState<VM extends ViewModel<E>, E> extends ConsumerState<Vi
       // this watch is needed so the provider is not destroyed after the .read call at initState
       ref.watch(widget.provider.select((_) {}));
       final model = ref.read(widget.provider);
-      return widget.builder(context, model, null);
+      return widget.builder(context, model);
     }
     final model = ref.watch(widget.provider);
-    return widget.builder(context, model, null);
+    return widget.builder(context, model);
   }
 }

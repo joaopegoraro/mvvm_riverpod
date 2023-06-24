@@ -96,7 +96,7 @@ Widget build(BuildContext context) {
       // Pass in the provider of the viewmodel
       provider: loginViewModelProvider,
       // use the ViewModel in the view
-      builder: (context, model, _) {
+      builder: (context, model) {
         return ListView(
           children: [
             (...)
@@ -147,7 +147,7 @@ Widget build(BuildContext context) {
       // Pass in the callback to be executed 
       // everytime the ViewModel emits an event
       onEventEmitted: _listenToEvents,
-      builder: (context, model, _) { ... },
+      builder: (context, model) { ... },
     ),
   );
 }
@@ -165,7 +165,7 @@ Widget build(BuildContext context) {
       provider: loginViewModelProvider,
       // Still can listen to the events
       onEventEmitted: _listenToEvents,
-      builder: (context, model, _) { 
+      builder: (context, model) { 
           // Here you have access to the model, but 
           // the view wont update when it changes
       },
@@ -190,7 +190,7 @@ Widget build(BuildContext context) {
         // do something when the viewmodel is disposed
       },
       onEventEmitted: _listenToEvents,
-      builder: (context, model, _) { ... },
+      builder: (context, model) { ... },
     ),
   );
 }
