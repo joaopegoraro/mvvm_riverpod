@@ -1,4 +1,5 @@
 # mvvm_riverpod
+[![pub package](https://img.shields.io/pub/v/mvvm_riverpod)](https://pub.dev/packages/mvvm_riverpod)
 
 Very simple implementation of the MVVM architechture using 
 [Riverpod](https://pub.dev/packages/riverpod/install), heavily inspired by the 
