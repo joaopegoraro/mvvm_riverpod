@@ -16,11 +16,11 @@ Very simple implementation of the MVVM architechture using [Riverpod](https://pu
 
 ## Dependencies
 
-This package needs [Riverpod](https://pub.dev/packages/riverpod/install) for it to function, so you need install too.
+This package needs [Riverpod](https://pub.dev/packages/riverpod/install) for it to function, so you need install it too.
 
 ## Getting started
 
-With Flutter:
+### With Flutter:
 
 ```bash
 $ flutter pub add mvvm_riverpod
@@ -34,7 +34,8 @@ dependencies:
 ```
 
 Alternatively, your editor might support flutter pub get. Check the docs for your editor to learn more.
-Import it
+
+### Import it
 
 Now in your Dart code, you can use:
 
