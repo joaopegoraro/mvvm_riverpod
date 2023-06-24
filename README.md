@@ -1,22 +1,13 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
 # mvvm_riverpod
 
-Very simple implementation of the MVVM architechture using [Riverpod](https://pub.dev/packages/riverpod/install), heavily inspired by the [Stacked](https://pub.dev/packages/stacked) architechture;
+Very simple implementation of the MVVM architechture using 
+[Riverpod](https://pub.dev/packages/riverpod/install), heavily inspired by the 
+[Stacked](https://pub.dev/packages/stacked) architechture;
 
 ## Dependencies
 
-This package needs [Riverpod](https://pub.dev/packages/riverpod/install) for it to function, so you need to install it too.
+This package needs [Riverpod](https://pub.dev/packages/riverpod/install) for it 
+to function, so you need to install it too.
 
 ## Getting started
 
@@ -26,14 +17,16 @@ This package needs [Riverpod](https://pub.dev/packages/riverpod/install) for it 
 $ flutter pub add mvvm_riverpod
 ```
 
-This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):
+This will add a line like this to your package's pubspec.yaml (and run an 
+implicit flutter pub get):
 
 ```yaml
 dependencies:
   mvvm_riverpod: [latest_version]
 ```
 
-Alternatively, your editor might support flutter pub get. Check the docs for your editor to learn more.
+Alternatively, your editor might support flutter pub get. Check the docs for 
+your editor to learn more.
 
 ### Import it
 
@@ -127,7 +120,8 @@ Widget build(BuildContext context) {
 ```
 
 #### Listening to ViewModel events
-The `ViewModelBuilder` has the optional `OnEventEmitted` callback that is triggered every time the ViewModel emits an event:
+The `ViewModelBuilder` has the optional `OnEventEmitted` callback that is 
+triggered every time the ViewModel emits an event:
 ```dart
 void _listenToEvents(
   BuildContext context,
@@ -163,7 +157,9 @@ Widget build(BuildContext context) {
 
 #### Accessing the ViewModel without reacting to its changes
 
-If you don't need the widget tree to rebuild when the ViewModel notifies its listeners, or you only need access to its methods and/or listen to its events, you can use the `ViewModelBuilder.nonReactive` constructor:
+If you don't need the widget tree to rebuild when the ViewModel notifies its 
+listeners, or you only need access to its methods and/or listen to its events, 
+you can use the `ViewModelBuilder.nonReactive` constructor:
 
 ```dart
 @override
@@ -183,7 +179,8 @@ Widget build(BuildContext context) {
 ```
 
 #### Observing the ViewModel lifecycle
-The `ViewModelBuilder` has both an `onCreate` and `onDispose` callbacks that are triggered when the ViewModel is created or disposed:
+The `ViewModelBuilder` has both an `onCreate` and `onDispose` callbacks that 
+are triggered when the ViewModel is created or disposed:
 
 ```dart
 @override
