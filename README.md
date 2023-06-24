@@ -16,7 +16,7 @@ Very simple implementation of the MVVM architechture using [Riverpod](https://pu
 
 ## Dependencies
 
-This package needs [Riverpod](https://pub.dev/packages/riverpod/install) for it to function, so you need install it too.
+This package needs [Riverpod](https://pub.dev/packages/riverpod/install) for it to function, so you need to install it too.
 
 ## Getting started
 
