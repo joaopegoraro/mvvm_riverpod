@@ -1,5 +1,5 @@
 name: mvvm_riverpod
-description: A new Flutter package project.
+description: Simple implementation of the MVVM architecture using Riverpod.
 repository: https://github.com/joaopegoraro/mvvm_riverpod
 issue_tracker: https://github.com/joaopegoraro/mvvm_riverpod/issues
 version: 1.0.0
