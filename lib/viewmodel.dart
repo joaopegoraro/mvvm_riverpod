@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 abstract class ViewModel<EVENT> extends ChangeNotifier {
   ViewModel() {
-    eventStream = eventController.stream;
+    eventStream = eventController.stream.asBroadcastStream();
   }
 
   @protected
