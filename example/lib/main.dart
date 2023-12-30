@@ -7,11 +7,27 @@ import 'package:mvvm_riverpod/mvvm_riverpod.dart';
 void main() {
   // change this to test the Widget or the Builder
   const useWidget = true;
-  runApp(
-    const ProviderScope(
-      child: useWidget ? MyAppWithWidget() : MyAppWithBuilder(),
-    ),
-  );
+  if (useWidget) {
+    // When you are using a top-level widget
+    // to observe the ViewModel, make sure there is a Scaffold
+    // above it, otherwise Snackbars or other context dependent
+    // components may not work
+    runApp(
+      const ProviderScope(
+        child: MaterialApp(
+          home: Scaffold(
+            body: MyAppWithWidget(),
+          ),
+        ),
+      ),
+    );
+  } else {
+    runApp(
+      const ProviderScope(
+        child: MyAppWithBuilder(),
+      ),
+    );
+  }
 }
 
 class MyAppWithBuilder extends StatelessWidget {
