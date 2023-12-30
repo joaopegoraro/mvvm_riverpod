@@ -89,7 +89,7 @@ final loginViewModelProvider = ViewModelProviderFactory.create((ref) {
 });
 ```
 
-#### Using a ViewModel
+#### Using a ViewModel with a Builder
 ```dart
 @override
 Widget build(BuildContext context) {
@@ -106,11 +106,8 @@ Widget build(BuildContext context) {
             MaterialButton(
               onPressed: model.performLogin,
               child: model.isLoading
-                  ? const CircularProgressIndicator(color: Colors.white)
-                  : Text(
-                      "LOGIN",
-                      style: bodyStyle.copyWith(color: Colors.white),
-                    ),
+                  ? const CircularProgressIndicator()
+                  : Text("LOGIN"),
             ),
           ],
         );
@@ -201,4 +198,49 @@ Widget build(BuildContext context) {
   );
 }
 
+```
+
+### Using a ViewModel with a Widget
+If you feel a Widget is less verbose than a Builder like `ViewModelBuilder`, you can
+use the `ViewModelWidget` to simplify things. But beware, the entire `Widget` will be 
+rebuilt whenever the `ViewModel` updates, unless `reactive` is set to false. Also, if you 
+plan on using `Snackbars` or similar `Scaffold` dependent components, make sure there is at 
+least one `Scaffold` above the widget.
+
+```dart
+class MyWidget extends ViewModelWidget<MyViewModel, MyEvent> {
+  const MyAppWithWidget({super.key});
+
+  // this is optional, by default it is true
+  @override
+  bool get reactive => true;
+
+  @override
+  ViewModelProvider<MyViewModel> get provider => myViewModelProvider;
+
+  // this is also optional
+  @override
+  void onEventEmitted(BuildContext context, MyViewModel model, MyEvent event) {
+    switch (event) {
+      case MyEvent.showSnackbar:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(model.snackbarMessage ?? ""),
+          ),
+        );
+    }
+  }
+
+  @override
+  Widget buildWidget(BuildContext context, MyViewModel model) {
+    return Center(
+      child: TextButton(
+        onPressed: model.doSomething,
+        child: model.isLoading
+            ? const CircularProgressIndicator()
+            : const Text("DO SOMETHING"),
+      ),
+    );
+  }
+}
 ```
