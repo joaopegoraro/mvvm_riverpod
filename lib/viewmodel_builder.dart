@@ -5,7 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mvvm_riverpod/viewmodel.dart';
 import 'package:mvvm_riverpod/viewmodel_provider.dart';
 
-class ViewModelBuilder<VM extends ViewModel<EVENT>, EVENT> extends ConsumerStatefulWidget {
+class ViewModelBuilder<VM extends ViewModel<EVENT>, EVENT>
+    extends ConsumerStatefulWidget {
   const ViewModelBuilder({
     super.key,
     required this.provider,
@@ -43,10 +44,12 @@ class ViewModelBuilder<VM extends ViewModel<EVENT>, EVENT> extends ConsumerState
   final Widget Function(BuildContext context, VM value) builder;
 
   @override
-  ConsumerState<ViewModelBuilder> createState() => ViewModelBuilderState<VM, EVENT>();
+  ConsumerState<ViewModelBuilder> createState() =>
+      ViewModelBuilderState<VM, EVENT>();
 }
 
-class ViewModelBuilderState<VM extends ViewModel<E>, E> extends ConsumerState<ViewModelBuilder<VM, E>> {
+class ViewModelBuilderState<VM extends ViewModel<E>, E>
+    extends ConsumerState<ViewModelBuilder<VM, E>> {
   StreamSubscription<E>? _eventSubscription;
 
   @override

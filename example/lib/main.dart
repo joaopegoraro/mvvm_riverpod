@@ -1,19 +1,21 @@
+// ignore_for_file: dead_code
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvvm_riverpod/viewmodel.dart';
-import 'package:mvvm_riverpod/viewmodel_builder.dart';
-import 'package:mvvm_riverpod/viewmodel_provider.dart';
+import 'package:mvvm_riverpod/mvvm_riverpod.dart';
 
 void main() {
+  // change this to test the Widget or the Builder
+  const useWidget = true;
   runApp(
     const ProviderScope(
-      child: MyApp(),
+      child: useWidget ? MyAppWithWidget() : MyAppWithBuilder(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyAppWithBuilder extends StatelessWidget {
+  const MyAppWithBuilder({super.key});
 
   void _listenToEvents(
     BuildContext context,
@@ -22,9 +24,11 @@ class MyApp extends StatelessWidget {
   ) {
     switch (event) {
       case MyEvent.showSnackbar:
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(model.snackbarMessage ?? ""),
-        ));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(model.snackbarMessage ?? ""),
+          ),
+        );
     }
   }
 
@@ -45,6 +49,46 @@ class MyApp extends StatelessWidget {
               ),
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+class MyAppWithWidget extends ViewModelWidget<MyViewModel, MyEvent> {
+  const MyAppWithWidget({super.key});
+
+  // this is optional, by default it is true
+  @override
+  bool get reactive => true;
+
+  @override
+  ViewModelProvider<MyViewModel> get provider => myViewModelProvider;
+
+  // this is also optional
+  @override
+  void onEventEmitted(BuildContext context, MyViewModel model, MyEvent event) {
+    switch (event) {
+      case MyEvent.showSnackbar:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(model.snackbarMessage ?? ""),
+          ),
+        );
+    }
+  }
+
+  @override
+  Widget buildWidget(BuildContext context, MyViewModel model) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: TextButton(
+            onPressed: model.doSomething,
+            child: model.isLoading
+                ? const CircularProgressIndicator()
+                : const Text("DO SOMETHING"),
+          ),
         ),
       ),
     );

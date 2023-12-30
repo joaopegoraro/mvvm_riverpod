@@ -106,11 +106,8 @@ Widget build(BuildContext context) {
             MaterialButton(
               onPressed: model.performLogin,
               child: model.isLoading
-                  ? const CircularProgressIndicator(color: Colors.white)
-                  : Text(
-                      "LOGIN",
-                      style: bodyStyle.copyWith(color: Colors.white),
-                    ),
+                  ? const CircularProgressIndicator()
+                  : Text("LOGIN"),
             ),
           ],
         );
