@@ -96,16 +96,12 @@ class MyAppWithWidget extends ViewModelWidget<MyViewModel, MyEvent> {
 
   @override
   Widget buildWidget(BuildContext context, MyViewModel model) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: TextButton(
-            onPressed: model.doSomething,
-            child: model.isLoading
-                ? const CircularProgressIndicator()
-                : const Text("DO SOMETHING"),
-          ),
-        ),
+    return Center(
+      child: TextButton(
+        onPressed: model.doSomething,
+        child: model.isLoading
+            ? const CircularProgressIndicator()
+            : const Text("DO SOMETHING"),
       ),
     );
   }
